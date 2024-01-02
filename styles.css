@@ -1,0 +1,37 @@
+/* CSS box-sizing enables you to define how you want the height and width of an element to be 
+calculated. It means that you can use this property to specify whether the padding or border of the 
+element should be included in the height and width or not. */
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Baskervville, serif;
+  color: linen;
+  background-color: rgb(20, 30, 40);
+}
+
+h1 {
+  font-family: Anton, sans-serif;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Raleway, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: linen;
+}
