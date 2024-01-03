@@ -85,8 +85,9 @@ hr {
 .lists li {
   margin-bottom: 1.5rem;
 }
-.list-title, .list-subtitle {
-  color: #00beef; 
+.list-title,
+.list-subtitle {
+  color: #00beef;
 }
 
 /* Grid-column property, which is shorthand for grid-column-start and grid-column-end. The 
@@ -202,4 +203,27 @@ already inheriting the styles from your .text rule. */
   grid-template-columns: 1fr 2fr;
   column-gap: 3rem;
   margin-bottom: 3rem;
+}
+
+/* The gap property is a shorthand way to set the value of column-gap and row-gap at the same time. 
+If given one value, it sets the column-gap and row-gap both to that value. If given two values, it sets the 
+row-gap to the first value and the column-gap to the second. */
+
+/* The place-items property can be used to set the align-items and justify-items values at the same 
+time. The place-items property takes one or two values. */
+
+/* If one value is provided, it is used for both the align-items and justify-items properties. If two values 
+are provided, the first value is used for the align-items property and the second value is used for the 
+justify-items property. */
+.image-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(3, min-content);
+  gap: 2rem;
+  place-items: center;
+}
+
+.image-1,
+.image-3 {
+  grid-column: 1/-1;
 }
