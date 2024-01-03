@@ -19,8 +19,18 @@ body {
   background-color: rgb(20, 30, 40);
 }
 
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Baskervville", serif;
+  color: linen;
+  background-color: rgb(20, 30, 40);
+}
+
 h1 {
-  font-family: Anton, sans-serif;
+  font-family: "Anton", sans-serif;
 }
 
 h2,
@@ -43,6 +53,7 @@ img {
   width: 100%;
   object-fit: cover;
 }
+
 /* CSS Grid offers a two-dimensional grid-based layout, allowing you to center items horizontally and 
 vertically while still retaining control to do things like overlap elements */
 
@@ -62,6 +73,22 @@ main {
   row-gap: 3rem;
 }
 
+hr {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(120, 120, 120, 0.6);
+}
+
+.lists {
+  list-style-type: none;
+  margin-top: 2rem;
+}
+.lists li {
+  margin-bottom: 1.5rem;
+}
+.list-title, .list-subtitle {
+  color: #00beef; 
+}
+
 /* Grid-column property, which is shorthand for grid-column-start and grid-column-end. The 
 grid-column property tells the grid item which grid line to start and end at. */
 
@@ -75,8 +102,8 @@ CSS Grid. */
 helpful for grid layouts. For example, setting the grid-template-columns property to repeat(20, 200px)
  would create 20 columns each 200px wide. */
 .heading {
+  grid-column: 2 / 3;
   display: grid;
-  grid-column: 2/3;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 1.5rem;
 }
@@ -85,12 +112,18 @@ helpful for grid layouts. For example, setting the grid-template-columns propert
 There may be times where you are unsure of how many columns your grid will have, but you want an 
 element to stop at the last column. To do this, you can use -1 for the end column. */
 .hero {
+  grid-column: 1 / -1;
   position: relative;
-  grid-column: 1/ -1;
 }
 
+/* Your .text element is not a CSS Grid, but you can create columns within an element without using 
+Grid by using the column-width property. */
 .text {
-  grid-column: 2/3;
+  grid-column: 2 / 3;
+  font-size: 1.8rem;
+  letter-spacing: 0.6px;
+  column-width: 25rem;
+  text-align: justify;
 }
 
 .hero-title {
@@ -107,7 +140,7 @@ element to stop at the last column. To do this, you can use -1 for the end colum
 
 .author {
   font-size: 2rem;
-  font-family: Raleway, sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 .author-name a:hover {
   background-color: #306203;
@@ -117,7 +150,56 @@ element to stop at the last column. To do this, you can use -1 for the end colum
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* If you wanted to add more social icons, but keep them on the same row, you would need to update 
+grid-template-columns to create additional columns. As an alternative, you can use the grid-auto-flow 
+property */
+
+/* This property takes either row or column as the first value, with an optional second value of dense. 
+grid-auto-flow uses an auto-placement algorithm to adjust the grid layout. Setting it to column will tell 
+the algorithm to create new columns for content as needed */
+
+/* The dense value allows the algorithm to backtrack and fill holes in the grid with smaller items, which
+can result in items appearing out of order*/
 .social-icons {
   display: grid;
   font-size: 3rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: center;
+}
+
+/* The ::first-letter pseudo-selector allows you to target the first letter in the text content of an 
+element. */
+.first-paragraph::first-letter {
+  font-size: 6rem;
+  color: orangered;
+  float: left;
+  margin-right: 1rem;
+}
+
+.quote {
+  color: #00beef;
+  font-size: 2.4rem;
+  text-align: center;
+  font-family: Raleway, sans-serif;
+}
+
+.quote::before {
+  content: '" ';
+}
+
+.quote::after {
+  content: ' "';
+}
+
+/* Note that it has the text and text-with-images values for the class attribute, which means it is 
+already inheriting the styles from your .text rule. */
+
+/* inherited rules from .text */
+.text-with-images {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 3rem;
+  margin-bottom: 3rem;
 }
